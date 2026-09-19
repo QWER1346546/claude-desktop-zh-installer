@@ -117,10 +117,11 @@ else {
     # 需要修补的三类模式（用字符串字面量替换，安全、幂等）
     $patterns = @(
         # 1. 语言列表数组: ["en-US",...,"id-ID"] -> 加 ,"zh-CN"
+        #    用通用结尾 "id-ID"] 匹配，兼容 1.x 的 "id-ID"];function 和 2.x 的 "id-ID"],xxx
         @{
             Name = "语言列表数组"
-            From = '"id-ID"];function'
-            To   = '"id-ID","zh-CN"];function'
+            From = '"id-ID"]'
+            To   = '"id-ID","zh-CN"]'
         },
         # 2. 日期格式化 locale 映射: "id-ID":"id"} -> 加 ,"zh-CN":"zh"
         @{
